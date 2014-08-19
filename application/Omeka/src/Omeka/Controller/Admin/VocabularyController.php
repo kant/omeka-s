@@ -19,7 +19,10 @@ class VocabularyController extends AbstractActionController
         $view = new ViewModel;
         $api = $this->getServiceLocator()->get('Omeka/ApiManager');
         $response = $api->search('vocabularies');
-
+        if ($response->isError()) {
+            print_r($response->getErrors());
+            exit;
+        }
         $view->setVariable('vocabularies', $response->getContent());
         return $view;
     }
