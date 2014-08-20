@@ -17,6 +17,12 @@ class ItemSetController extends AbstractActionController
     public function browseAction()
     {
         $view = new ViewModel;
+        $response = $this->api()->search('item_sets');
+        if ($response->isError()) {
+            print_r($response->getErrors());
+            exit;
+        }
+        $view->setVariable('item_sets', $response->getContent());
         return $view;
     }
 }

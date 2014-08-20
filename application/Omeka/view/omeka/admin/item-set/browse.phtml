@@ -1,1 +1,42 @@
+<?php $this->htmlElement('body')->appendAttribute('class', 'browse item-set'); ?>
+
 <h1>Browse Item Sets</h1>
+
+<div id="page-actions">
+    <a href="#" class="button">Add Item Set</a>
+</div>
+
+<a href="#" class="batch=edit button">Batch Edit Selected</a>
+
+<table>
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="select-all"><label class="screen-reader-text" for="select-all">Select all</label></th>
+            <th>Name <a href="#" class="fa-caret-down"><span class="screen-reader-text">Sort</span></a></th>
+            <th>Items <a href="#" class="fa-caret-down"><span class="screen-reader-text">Sort</span></a></th>
+            <th>Owner <a href="#" class="fa-caret-down"><span class="screen-reader-text">Sort</span></a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($item_sets as $item_set): ?>
+            <?php $item_set_ID = $item_set->getID(); ?>
+            <tr>
+                <td><input type="checkbox" id="row-<?php echo $item_set_ID; ?>"><label class="screen-reader-text" for="row-<?php echo $item_set_ID; ?>">Select row</label></td>
+                <td>
+                    <span class="record-name"><a href="#"><?php echo $item_set->getValue('dcterms:title'); ?></a></span>
+                    <div class="actions">
+                        <a href="#" class="fa-ellipsis-h"><span class="screen-reader-text">More Details</span></a>
+                        <a href="#" class="fa-pencil"><span class="screen-reader-text">Edit</span></a>
+                        <a href="#" class="fa-trash-o"><span class="screen-reader-text">Delete</span></a>
+                    </div>
+                </td>
+                <td><a href="#">124</a></td>
+                <td><a href="#">admin</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<div class="overlay"></div>
+  
+<div class="modal"></div>
