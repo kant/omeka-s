@@ -10,4 +10,9 @@ class ItemSetRepresentation extends AbstractResourceEntityRepresentation
     {
         return array();
     }
+
+    public function getItemCount()
+    {
+        return count($this->getData()->getItems());
+    }
 }
