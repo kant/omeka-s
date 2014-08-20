@@ -52,6 +52,7 @@ return array(
             'Omeka\Controller\Site\Index'      => 'Omeka\Controller\Site\IndexController',
             'Omeka\Controller\Admin\Index'     => 'Omeka\Controller\Admin\IndexController',
             'Omeka\Controller\Admin\Item'      => 'Omeka\Controller\Admin\ItemController',
+            'Omeka\Controller\Admin\ItemSet'   => 'Omeka\Controller\Admin\ItemSetController',
             'Omeka\Controller\Admin\User'      => 'Omeka\Controller\Admin\UserController',
             'Omeka\Controller\Admin\Module'    => 'Omeka\Controller\Admin\ModuleController',
             'Omeka\Controller\Admin\Vocabulary' => 'Omeka\Controller\Admin\VocabularyController',
