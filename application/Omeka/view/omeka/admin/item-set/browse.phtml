@@ -27,7 +27,7 @@
                     <span class="record-name"><a href="<?php echo $this->escapeHtmlAttr($this->url('admin/id', array('id' => $item_set->getID(), 'action' => 'show'), true)); ?>"><?php echo $item_set->getValue('dcterms:title'); ?></a></span>
                     <div class="actions">
                         <a href="#" class="fa-ellipsis-h"><span class="screen-reader-text">More Details</span></a>
-                        <a href="#" class="fa-pencil"><span class="screen-reader-text">Edit</span></a>
+                        <a href="<?php echo $this->escapeHtmlAttr($this->url('admin/id', array('id' => $item_set->getID(), 'action' => 'edit'), true)); ?>" class="fa-pencil"><span class="screen-reader-text">Edit</span></a>
                         <a href="#" class="fa-trash-o"><span class="screen-reader-text">Delete</span></a>
                     </div>
                 </td>
