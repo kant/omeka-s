@@ -21,11 +21,10 @@
     </thead>
     <tbody>
         <?php foreach($item_sets as $item_set): ?>
-            <?php $item_set_ID = $item_set->getID(); ?>
             <tr>
-                <td><input type="checkbox" id="row-<?php echo $item_set_ID; ?>"><label class="screen-reader-text" for="row-<?php echo $item_set_ID; ?>">Select row</label></td>
+                <td><input type="checkbox" id="row-<?php echo $item_set->getID(); ?>"><label class="screen-reader-text" for="row-<?php echo $item_set->getID(); ?>">Select row</label></td>
                 <td>
-                    <span class="record-name"><a href="#"><?php echo $item_set->getValue('dcterms:title'); ?></a></span>
+                    <span class="record-name"><a href="<?php echo $this->escapeHtmlAttr($this->url('admin/id', array('id' => $item_set->getID(), 'action' => 'show'), true)); ?>"><?php echo $item_set->getValue('dcterms:title'); ?></a></span>
                     <div class="actions">
                         <a href="#" class="fa-ellipsis-h"><span class="screen-reader-text">More Details</span></a>
                         <a href="#" class="fa-pencil"><span class="screen-reader-text">Edit</span></a>
