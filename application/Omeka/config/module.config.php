@@ -32,11 +32,15 @@ return array(
             'Omeka\FilterManager'       => 'Omeka\Event\FilterManager',
             'Omeka\MvcListeners'        => 'Omeka\Mvc\MvcListeners',
             'Omeka\Options'             => 'Omeka\Service\Options',
+            'Omeka\Paginator'           => 'Omeka\Service\Paginator',
             'Omeka\RdfImporter'         => 'Omeka\Service\RdfImporter',
             'Omeka\ViewApiJsonRenderer' => 'Omeka\View\Renderer\ApiJsonRenderer',
         ),
         'aliases' => array(
             'Zend\Authentication\AuthenticationService' => 'Omeka\AuthenticationService'
+        ),
+        'shared' => array(
+            'Omeka\Paginator' => false,
         ),
     ),
     'listeners' => array(
@@ -64,6 +68,7 @@ return array(
             'api'       => 'Omeka\Mvc\Controller\Plugin\Api',
             'translate' => 'Omeka\Mvc\Controller\Plugin\Translate',
             'messenger' => 'Omeka\Mvc\Controller\Plugin\Messenger',
+            'paginator' => 'Omeka\Mvc\Controller\Plugin\Paginator',
         ),
     ),
     'view_manager' => array(
@@ -170,6 +175,7 @@ return array(
             'Omeka\Installation\Task\InstallDefaultVocabularyTask',
             'Omeka\Installation\Task\InstallDefaultVocabulariesTask',
             'Omeka\Installation\Task\CreateFirstUserTask',
+            'Omeka\Installation\Task\AddDefaultOptionsTask',
         ),
     ),
     'translator' => array(
@@ -250,7 +256,7 @@ return array(
                     'default' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/[:controller[/:action][/]]',
+                            'route' => '/[:controller[/:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -260,9 +266,10 @@ return array(
                     'id' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/:controller/:id',
+                            'route' => '/:controller/:id[/[:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'         => '\d+',
                             ),
                             'defaults' => array(
